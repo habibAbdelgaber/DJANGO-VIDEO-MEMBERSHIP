@@ -155,3 +155,4 @@ dmypy.json
 
 ngrok.exe
 requirements.txt
+.vscode
