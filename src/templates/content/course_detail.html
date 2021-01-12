@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="row my-1">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-body">
+                {% for video in course.videos.all %}
+                {% include 'content/snippets/video_step.html' with video=video %}
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    {% for video in  course.videos.all %}
+    <div class="col-md-3">
+        <div class="card">
+            <div class="card-body">
+                <a href="{{ video.get_absolute_video_url }}"><img class="img-fluid" src="{{ object.img.url }}" alt="img"
+                        width="350"></a>
+                <p class="card-text py-2">{{ object.description }}</p>
+                <a href="{{ video.get_absolute_video_url }}">{{ video.title}} &RightArrow;</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

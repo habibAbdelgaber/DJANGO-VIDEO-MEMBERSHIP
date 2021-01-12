@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+
+{% block content %}
+<div class="row mt-1 ml-1">
+    {% for object in object_list %}
+    <div class="col-md-9" style="background-color: #fff;">
+        <p><a href="{{ object.get_absolute_url }}">{{ object.title }}</a></p>
+        <p class="text-muted">Posted by {{ object.author }}<small> On {{ object.date_created|date:"F d, Y" }}</small>
+        </p>
+        <p>{{ object.content|safe }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}

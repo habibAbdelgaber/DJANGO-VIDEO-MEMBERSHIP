@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+<div class="row mt-1 ml-1">
+    <div class="col-md-9" style='background-color: #fff;'>
+        <p><strong>{{ object.title }}</strong></p>
+        <p class='text-muted'>Posted by {{ object.author}}<small> On {{ object.date_created|date:"F d, Y"}}</small></p>
+        <p>{{ object.content|safe }}</p>
+        <hr>
+        <p>
+            <a href="{{ object.get_like_url }}">
+                <strong class="text-muted">Enjoyed this post? Give it a like! </strong>
+                <i class="far fa-thumbs-up ml-1 text-muted"></i>
+                {{ object.get_like_count }}
+            </a>
+            <a href="#"><i class="far fa-eye ml-3 text-muted"></i>
+                {{ object.get_view_count }}
+            </a>
+            <a href="#">
+                <i class="far fa-comments ml-3 text-muted"></i>
+                <!-- {{ object.get_comment_count }} -->
+            </a>
+        </p>
+        <hr>
+        <h5 class='ml-1'>Leave a comment</h5>
+        <form method='POST'>
+            {% csrf_token %}
+            {{ form|crispy }}
+            <button class="btn btn-primary mb-2" type="submit">Comment &GreaterGreater;</button>
+        </form>
+        <hr>
+        <h5>Comments</h5>
+        {% for comment in object.comments %}
+        <p>{{ comment.content }}</p>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="row justify-content-center my-1">
+    <div class="card-deck mb-3">
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Basic</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title ml-3">$17 <small class="text-muted">/mo</small></h1>
+                    <ul class="mt-3 mb-4">
+                        <li>Access all videos on basic</li>
+                        <li>Best place to start learning django basic</li>
+                        <li>Priority email support</li>
+                        <li>Help center access</li>
+                    </ul>
+                    <a href="{% url 'payment:payment' 'basic' %}" class="btn btn-lg btn-block btn-primary">Enroll
+                        Now</a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4 shadow-sm">
+                <div class="card-header">
+                    <h4 class="my-0 font-weight-normal">Pro</h4>
+                </div>
+                <div class="card-body">
+                    <h1 class="card-title pricing-card-title ml-3">$25 <small class="text-muted">/mo</small></h1>
+                    <ul class="mt-3 mb-4">
+                        <li>Everything included in Basic</li>
+                        <li>15 GB of storage</li>
+                        <li>Phone and email support</li>
+                        <li>Access all Pro videos</li>
+                    </ul>
+                    <a href="{% url 'payment:payment' 'pro' %}" class="btn btn-lg btn-block btn-primary">Enroll Now</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

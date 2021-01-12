@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="row my-1">
+    <div class="col-md-2">
+        <div class="card">
+            <div class="card-body">
+                {% for video in video.course.videos.all %}
+                {% include 'content/snippets/video_step.html' with video=video %}
+                10mins
+                <hr>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-10">
+        <div class="card border">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe class="embed-responsive-item" src="https://player.vimeo.com/video/{{ video.video_id }}"
+                    allowfullscreen></iframe>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="row">
+    {% for course in object_list %}
+    <div class="col-md-4">
+        <div class="card">
+            <img class="card-img-responsive" src="{{ course.img.url}}" alt="" height='200'>
+            <div class="card-body">
+                <p><i class="fa fa-clock"></i> 17 Hours | {{ object_list.count }} Lessons </p>
+                <h4><a style="font-size: 1.4rem;" href="{{ course.get_absolute_url }}">{{ course.name}}</a></h4>
+                <p class="card-text">{{ course.description}}</p>
+                <span class="text-center"><a style="font-size: small;" class="btn btn-primary" href="#">COURSE
+                        DETAIL</a><a style="font-size: small;" class="btn btn-outline-primary ml-2" href="#">WATCH
+                        PREVIEW</a></span>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock content %}

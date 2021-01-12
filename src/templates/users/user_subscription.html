@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}User: {{ object.username }}{% endblock %}
+
+{% block content %}
+<div class="row">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-header bg-dark text-light">
+                <h5 class="card-title pt-2">Subscription Detail</h5>
+            </div>
+            <div class="card-body">
+                <h4 class="card-text text-muted">Subscriber: {{ user.username }}</h4>
+                <h4 class="card-text text-muted">Package: {{ user.subscription.pricing.name }}</h4>
+                <h4 class="card-text text-muted">Status: {{ user.subscription.status }}</h4>
+                <a class="btn btn-success" href="{% url 'payment:enroll' %}"><strong>Change your package</strong></a>
+                <hr>
+                <h4 class="card-text text-muted">Cancel Your membership: </h4>
+                <p class="card-text">
+                    Once you've cancelled membership, you will no longer access to all of the content on
+                    mysite.com
+                </p>
+                {% if user.subscription.status != 'canceled' %}
+                <form action="{% url 'users:cancel-subscription' request.user.username %}" method='POST'>
+                    {% csrf_token %}
+                    {{ form }}
+                    <button class="btn btn-md btn-danger text-nuted" type="submit">Cancel Subscription</button>
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% endblock content %}

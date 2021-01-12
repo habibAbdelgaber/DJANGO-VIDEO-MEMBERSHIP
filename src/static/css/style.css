@@ -1,0 +1,16 @@
+body{
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 200;
+    background-color: #edf8f8;
+}
+
+a{
+    text-decoration: none
+}
+
+.nav-link{
+    text-transform: capitalize;
+    color: #eee;
+    font-size: 1.2rem;
+
+}

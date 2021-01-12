@@ -1,0 +1,31 @@
+<nav class="navbar navbar-expand-lg navbar-success bg-success">
+  <div class="container">
+    <!-- <a class="navbar-brand" href="/">Navbar</a> -->
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link active" href="{% url 'blog:post-list' %}"><i class="fa fa-home"></i>Home</a>
+      </div>
+      {% if request.user.is_authenticated %}
+      <div class="navbar-nav">
+        <a class="nav-link" href="{% url 'content:course-list' %}">Courses</a>
+        <a class="nav-link" href="{% url 'payment:enroll' %}">Enroll</a>
+        <a class="nav-link" href="{% url 'users:detail' request.user.username %}">My
+          Profile</a>
+      </div>
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{% url 'account_logout' %}"><i class="fas fa-sign-out-alt"></i> Sign
+          Out</a>
+      </div>
+      {% else %}
+      <div class="navbar-nav ml-auto">
+        <a class="nav-link" href="{% url 'account_login' %}"><i class="fas fa-sign-in-alt"></i> Sign In</a>
+        <a class="nav-link" href="{% url 'account_signup' %}"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</nav>
